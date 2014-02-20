@@ -1,0 +1,20 @@
+<form enctype="multipart/form-data" method="post" action="<?php echo $this->url(array('action' => $this->action, 'controller' => $this->imageControllerName))?>">
+  <input type="hidden" name="visualised_id" value="<?php echo $this->visualised_id?>" />
+  <?php if (isset($this->return_url)): ?>
+    <input type="hidden" name="return_url" value="<?php echo $this->escapeUrl($this->return_url) ?>" />
+  <?php endif ?>
+    
+  <dl>
+    <dt><label for="image">Image</label></dt>
+    <dd>
+      <?php echo $this->error($this->imageForm, 'image')?>
+      <input type="file" name="image[image]" />
+    </dd>
+  </dl>
+  
+  <dl class="footer">
+    <dd>
+      <input type="submit" value="<?php echo $this->action?>" />
+    </dd>
+  </dl>
+</form>

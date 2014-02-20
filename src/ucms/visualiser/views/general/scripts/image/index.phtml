@@ -1,0 +1,12 @@
+Hier worden alle images getoond.<br />
+<br /><br />
+<?php foreach ($this->images as $image): ?>
+<div>
+  <img src="<?php echo $this->baseUrl($this->visualiser($this->imageControllerName)->imageUri($image, '120x80')) ?>" /><br />
+  <a href="<?php echo $this->url(array('controller' => $this->imageControllerName, 'action' => 'delete', 'id' => $image['id']))?>">delete</a>
+</div>
+<?php endforeach ?>
+
+<?php if ($this->visualiser($this->imageControllerName)->config('max_images') > $this->images['image_count']): ?>
+<a href="<?php echo $this->url(array('controller' => $this->imageControllerName, 'action' => 'create', 'visualised_id' => $this->visualised_id))?>">Add image</a>
+<?php endif ?>
